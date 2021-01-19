@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         btOpenResult.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("ENTERED_NAME", etName.text.toString())
             startActivity(intent)
         }
     }
