@@ -8,6 +8,10 @@ import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val ENTERED_NAME = "ENTERED_NAME"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,15 +23,15 @@ class MainActivity : AppCompatActivity() {
 
         btSend.setOnClickListener {""
             if (etName.text.isNotBlank()) {
-                tvOutput.text = "Olá, ${etName.text}!"
+                tvOutput.text = getString(R.string.hello_name, etName.text.toString())
             } else {
-                etName.error = "Digite um nome..."
+                etName.error = getString(R.string.insert_your_name)
             }
         }
 
         btOpenResult.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
-            intent.putExtra("ENTERED_NAME", etName.text.toString())
+            intent.putExtra(ENTERED_NAME, etName.text.toString())
             startActivity(intent)
         }
     }
