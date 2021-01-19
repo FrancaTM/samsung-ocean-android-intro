@@ -1,5 +1,6 @@
 package com.tulio.ocean_android_intro
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,8 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val tvOutput = findViewById<TextView>(R.id.tvOutput)
-        val btSend = findViewById<Button>(R.id.btSend)
         val etName = findViewById<EditText>(R.id.etName)
+        val btSend = findViewById<Button>(R.id.btSend)
+        val btOpenResult = findViewById<Button>(R.id.btOpenResult)
 
         btSend.setOnClickListener {""
             if (etName.text.isNotBlank()) {
@@ -21,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             } else {
                 etName.error = "Digite um nome..."
             }
+        }
+
+        btOpenResult.setOnClickListener {
+            val intent = Intent(this, ResultActivity::class.java)
+            startActivity(intent)
         }
     }
 }
